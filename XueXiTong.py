@@ -121,7 +121,7 @@ class YunPan(XueXiTong):
         r = requests.get("http://pan-yz.chaoxing.com/download/downloadfile", params=params, cookies=self.cookies,
                          headers=headers)
         if r.status_code == 200:
-            return r.content
+            return r.iter_content(chunk_size=1024*5)
         else:
             return
 
